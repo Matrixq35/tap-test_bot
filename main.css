@@ -9,6 +9,12 @@ body {
     justify-content: center;
     min-height: 100vh;
     background-color: #f0f0f0;
+    overscroll-behavior: none; /* Блокировка прокрутки на уровне браузера */
+}
+
+html, body {
+    overflow: hidden; /* Полностью отключаем прокрутку */
+    height: 100%; /* Устанавливаем высоту на 100% */
 }
 
 h1 {

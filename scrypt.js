@@ -83,3 +83,19 @@ upgrade2.addEventListener("click", buyUpgrade2); // Покупка улучше�
 
 // Загрузка прогресса при старте игры
 loadProgress();
+
+// === Блокировка прокрутки для Telegram Mini Apps ===
+
+// Полностью блокируем свайпы и прокрутку
+document.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+}, { passive: false });
+
+document.addEventListener("gesturestart", (e) => {
+    e.preventDefault();
+});
+
+// Отключение масштабирования
+document.addEventListener("dblclick", (e) => {
+    e.preventDefault();
+});
