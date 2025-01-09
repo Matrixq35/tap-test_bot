@@ -1,5 +1,7 @@
 let balance = 0; // Баланс пользователя
 let tapValue = 1; // Сколько очков добавляет один тап
+let miningId = null; // Переменная для хранения id майнинга
+let rawardMining = 1; // Доход майнинга
 
 const scoreDisplay = document.getElementById("scoreBalance");
 const buttonTap = document.getElementById("tapButton");
@@ -9,6 +11,16 @@ const upgrade1 = document.getElementById("upgrade1");
 const upgrade2 = document.getElementById("upgrade2");
 const upgrade3 = document.getElementById("upgrade3")
 const backToGame = document.getElementById("backToGame");
+const rewardTap = document.getElementById("online");
+const miningButton = document.getElementById("miningButton")
+
+// Функция для отображения награды за тап
+function updateVolueTap() {
+    if (tapValue !== 0) {
+        rewardTap.textContent = "Награда за tap: " + tapValue;
+    }
+}
+
 
 // Функция для добавления очков
 function addScore() {
@@ -58,8 +70,9 @@ function buyUpgrade1() {
         tapValue += 1; // Увеличиваем тап на 1
         updateDisplay(); // Обновляем экран
         saveProgress(); // Сохраняем прогресс
+        updateVolueTap();
     } else {
-        alert("Недостаточно поинтов!"); // Если поинтов не хватает
+        alert("ИДИ НАХУЙ, ЗАПЛАТИ!"); // Если поинтов не хватает
     }
 }
 
@@ -70,8 +83,9 @@ function buyUpgrade2() {
         tapValue += 2; // Увеличиваем тап на 2
         updateDisplay(); // Обновляем экран
         saveProgress(); // Сохраняем прогресс
+        updateVolueTap();
     } else {
-        alert("Недостаточно поинтов!"); // Если поинтов не хватает
+        alert("ИДИ НАХУЙ, ЗАПЛАТИ!"); // Если поинтов не хватает
     }
 }
 // Покупка улучшения 3
@@ -81,10 +95,37 @@ function buyUpgrade3() {
         tapValue += 1000;
         updateDisplay();
         saveProgress();
+        updateVolueTap();
     } else {
-        alert ("Недостаточно поинтов!");
+        alert ("ИДИ НАХУЙ, ЗАПЛАТИ!");
     }
 }
+
+// Функции для начала майнинга
+function startMining() {
+    miningId = setInterval (() => {
+        balance += rawardMining;
+        saveProgress();
+        updateDisplay()
+    }, 1000)
+}
+
+function stopMining() {
+    clearInterval(miningId);
+    miningId = null;
+}
+
+function mainMiningFunction() {
+    if (miningId) {
+        stopMining();
+        miningButton.textContent = "Начать майнинг"
+    } else {
+        startMining();
+        miningButton.textContent = "Остановить майнинг"
+    }
+}
+   
+
 
 // Привязка событий
 buttonTap.addEventListener("click", addScore); // По клику увеличиваем баланс
@@ -92,10 +133,15 @@ upgradeTabButton.addEventListener("click", showUpgradeTab); // Переход в
 backToGame.addEventListener("click", backToGameTab); // Возврат в игру
 upgrade1.addEventListener("click", buyUpgrade1); // Покупка улучшения 1
 upgrade2.addEventListener("click", buyUpgrade2); // Покупка улучшения 2
-upgrade3.addEventListener("click", buyUpgrade3)  // Покупка улучшения 3
+upgrade3.addEventListener("click", buyUpgrade3); // Покупка улучшения 3
+miningButton.addEventListener("click", mainMiningFunction); // Начать майнинг
+
 
 // Загрузка прогресса при старте игры
 loadProgress();
+
+// Обновление награды за тап
+updateVolueTap()
 
 // === Блокировка прокрутки для Telegram Mini Apps ===
 
