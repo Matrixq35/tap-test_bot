@@ -7,6 +7,7 @@ const upgradeTabButton = document.getElementById("upgradeTabButton");
 const upgradeTab = document.getElementById("upgradeTab");
 const upgrade1 = document.getElementById("upgrade1");
 const upgrade2 = document.getElementById("upgrade2");
+const upgrade3 = document.getElementById("upgrade3")
 const backToGame = document.getElementById("backToGame");
 
 // Функция для добавления очков
@@ -73,6 +74,17 @@ function buyUpgrade2() {
         alert("Недостаточно поинтов!"); // Если поинтов не хватает
     }
 }
+// Покупка улучшения 3
+function buyUpgrade3() {
+    if (balance >= 10000) {
+        balance -=10000;
+        tapValue += 1000;
+        updateDisplay();
+        saveProgress();
+    } else {
+        alert ("Недостаточно поинтов!");
+    }
+}
 
 // Привязка событий
 buttonTap.addEventListener("click", addScore); // По клику увеличиваем баланс
@@ -80,6 +92,7 @@ upgradeTabButton.addEventListener("click", showUpgradeTab); // Переход в
 backToGame.addEventListener("click", backToGameTab); // Возврат в игру
 upgrade1.addEventListener("click", buyUpgrade1); // Покупка улучшения 1
 upgrade2.addEventListener("click", buyUpgrade2); // Покупка улучшения 2
+upgrade3.addEventListener("click", buyUpgrade3)  // Покупка улучшения 3
 
 // Загрузка прогресса при старте игры
 loadProgress();
