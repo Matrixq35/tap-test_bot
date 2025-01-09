@@ -67,3 +67,9 @@ button:active {
     color: #333;
 }
 
+/* Отключение выделения текста */
+body, button, h1, p, #container, #upgradeTab {
+    user-select: none; /* Отключение выделения текста */
+    -webkit-user-select: none; /* Для браузеров на основе WebKit */
+    -ms-user-select: none; /* Для старых версий Internet Explorer */
+}
