@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap Game</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="container"> <!-- Основной блок игры -->
+        <h1 class="display">НАЧНИ ТАПАТЬ ПО КРУГУ ДЛЯ ПОЛУЧЕНИЯ ПОИНТОВ</h1> <!-- Заголовок -->
+        <p class="display" id="online">Online: 0</p> <!-- Количество онлайн пользователей -->
+        <p id="scoreBalance" class="display">Баланс: 0</p> <!-- Баланс -->
+        <button id="tapButton" class="display">TAP</button> <!-- Кнопка для кликов -->
+        
+        <button id="upgradeTabButton" class="display">Улучшения</button> <!-- Кнопка перехода в улучшения -->
+    </div>
+
+    <div id="upgradeTab" class="hidden"> <!-- Вкладка улучшений -->
+        <h2>Улучшения</h2> <!-- Заголовок вкладки -->
+        <button id="upgrade1">+1 к тапу (10 поинтов)</button> <!-- Улучшение 1 -->
+        <button id="upgrade2">+2 к тапу (50 поинтов)</button> <!-- Улучшение 2 -->
+        <button id="backToGame">Назад</button> <!-- Кнопка назад -->
+    </div>
+
+    <script src="scrypt.js"></script> <!-- Подключение JavaScript -->
+</body>
+</html>
